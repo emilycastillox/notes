@@ -30,3 +30,56 @@ arr1.slice(2,4)     //newArr [5,6]          - copies a new array from start inde
 arr1.concat([8,9],10,11) // => newArr [3,4,5,6,7,8,9] ==> finalResult [3,4,5,6,7,8,9,10,11]
 // - copies a new array from arr1 AND arguments that are arrays [6,7], then adds other args
 
+
+const arrayLike = {
+    0: "an",
+    1: "array",
+    [Symbol.isConcatSpreadable]: true,
+    length: 2
+  };
+
+  arr1.concat(arrayLike) // => newArr [3, 4, 5, 6, 7, "an", "array"]
+  // for array-like objects, setting the Symbol.isConcatSpreadable property to true will add elements rather than whole objects
+  
+  arr1.forEach(e => {
+    console.log(e+1)
+  }) // => 4,5,6,7,8 ** iterates through each element in an array and runs the function
+
+// **************** Searching in Arrays ******************
+
+//arr1.method(item,position)
+arr1.indexOf(3)      // => 0     ** finds index of item from position(optional param. if none, position = 0)
+arr1.lastIndexOf(4)  // => 1     ** same as indexOf but goes searches array from right to left
+
+arr1.includes(4)     // => true  ** returns true if item is found in array
+arr1.includes(2,3)   // => false ** searches from position index 3
+
+let students = [
+  {id:1, name:"Emily"},
+  {id:2, name:"Deneille"},
+  {id:3, name:"Mandy"}
+]
+
+let student = students.find(item => item.id == 1)
+console.log(student.name) // "Emily" - finds element in array of objects
+
+students.findIndex(item => item.id == 1) //0 -  returns the index where the element was found
+
+// filter returns array of all matching elements. returns empty array if nothing found
+let someStudents = users.filter((item => item.id > 1))
+console.log(someStudents) // [{id:2, name:"Deneille"}, {id:3, name:"Mandy"}]
+
+// ********** Transform Array Methods ************
+
+let groceries = ['milk', 'eggs', 'waffles', 'yogurt']
+let nums = [8,9,5,1,13]
+
+// calls the function on each item in the array and returns an array of the results
+groceries.map(item => item.length * 2) // [8,8,14,12]
+
+groceries.sort() // ['eggs', 'milk', 'waffles', 'yogurt'] - sorts an array as STRINGS by default
+nums.sort()     // beacuse .sort() uses strings to sort, need to pass in a compare function
+nums.sort((a,b) => a-b) // [1,5,8,9,13] - sorts number values ascending
+nums.sort((b,a) => a-b) // [13,9,8,5,1]  - sorts by descending order
+
+groceries.reverse() // ['yogurt','waffles', 'eggs', 'milk'] ** reverses elements in an array
