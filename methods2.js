@@ -82,4 +82,16 @@ nums.sort()     // beacuse .sort() uses strings to sort, need to pass in a compa
 nums.sort((a,b) => a-b) // [1,5,8,9,13] - sorts number values ascending
 nums.sort((b,a) => a-b) // [13,9,8,5,1]  - sorts by descending order
 
-groceries.reverse() // ['yogurt','waffles', 'eggs', 'milk'] ** reverses elements in an array
+groceries.reverse() // ['yogurt','waffles', 'eggs', 'milk'] - reverses elements in an array
+
+
+let characters = 'Gon, Killua, Kurapika'
+characters.split(',') //    ['Gon', Killua', 'Kurapika'] - splits a string into an array by the given dilimeter
+characters.split('')    // ['G','o','n',','K','i','l','l'....etc] an empty delim will split into individual characters
+
+let arrCharacters = ['Gon','Killua','Kurapika']
+arrCharacters.join('*') // 'Gon*Killua*Orchid' - turns away into a string by joining with ()
+
+Array.reduce(function(accumulator, item, index, array){ ... }, [inititial])
+nums.reduce((sum, current) => sum + current, 0) // => 42   - calculates a single value based on the values of the array. applies the function to each element and "carries on" the result to the the next call. accumulator param is the result of the previous function call or equals to initial for the first call, if initial is provided
+
